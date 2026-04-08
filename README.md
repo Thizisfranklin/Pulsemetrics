@@ -1,102 +1,73 @@
-# PulseMetrics — Product Metrics Layer + Root-Cause Copilot
+# Pulsemetrics - Product Intelligence & Experimentation System
 
 > This project is currently in active development
 
-PulseMetrics is an e-commerce product analytics system that standardizes KPI definitions, monitors funnel and revenue performance, detects unusual metric movement, and helps investigate likely root causes faster.
+**The Business Problem:**  
+In product-driven tech companies, distinguishing between statistical noise and true feature impact is critical. When a KPI increases by 1% during an A/B test, relying on basic averages often leads to false positives, wasted engineering time, and poor "ship-or-hold" decisions.
 
-## Business Problem
-E-commerce teams often struggle with inconsistent KPI definitions, slow root-cause investigations, and dashboards that show what changed but not why it changed. PulseMetrics was built to create a shared metrics layer, detect unusual KPI movement, and guide investigation into likely causes.
+**The Solution:**  
+Pulsemetrics is an end-to-end product analytics and experimentation engine designed to monitor performance, evaluate A/B tests, and optimize monetization. It moves beyond isolated analysis by connecting raw user behavior to rigorous statistical testing, enabling data-driven product strategy and clear execution decisions.
 
-## Project Goal
-Build an end-to-end metrics and monitoring workflow that:
-- standardizes core e-commerce KPIs
-- validates data quality
-- detects metric anomalies
-- supports root-cause investigation
-- provides rule-based and later LLM-assisted explanations
+## Core Modules
 
-## Core Features
-- KPI metrics layer for funnel, retention, and revenue metrics
-- SQL-based metric definitions
-- data quality checks
-- anomaly detection for KPI shifts
-- root-cause drilldowns by segment
-- rule-based copilot suggestions
-- optional LLM explanation layer
-- dashboard / visualization layer
+The system is structured into modular components, each responsible for a core part of product analysis and decision-making.
 
-## KPI Coverage
-Initial KPIs include:
-- Conversion Rate
-- Add-to-Cart Rate
-- Checkout Completion Rate
-- Average Order Value
-- Cart Abandonment Rate
-- Repeat Purchase Rate
+---
 
+### 📊 Metrics Engine (`metrics.py`)
+Defines and standardizes core product KPIs such as conversion, retention, and revenue per user using SQL and Python transformations.
+
+- Builds consistent metric definitions across analyses  
+- Tracks funnel performance and user behavior  
+- Serves as the foundation for all downstream analysis  
+
+---
+
+### 🧪 Experimentation Suite (`experiments.py`)
+Processes A/B and multivariate experiment data to evaluate the impact of product changes.
+
+- Applies statistical testing (t-tests, confidence intervals)  
+- Measures lift and computes p-values  
+- Supports clear ship-or-hold product decisions  
+
+---
+
+### 💰 Pricing & Monetization (`pricing.py`)
+Analyzes how pricing strategies, discounting, and segmentation influence conversion, demand, and revenue outcomes.
+
+- Evaluates pricing elasticity and user response  
+- Identifies underpricing and overpricing opportunities  
+- Supports monetization and revenue optimization decisions  
+
+---
 ## Tech Stack
 - SQL
 - Python
 - PostgreSQL
 - Pandas
 - Streamlit
-- Power BI
 - Git/GitHub
 
 ### Planned Additions
 - LLM-generated explanations
 - automatic SQL suggestions
 - natural-language investigation summaries
-- Docker
-- dbt
-- Tableau
-
-## Dataset
-This project uses an e-commerce event and transaction dataset with tables for:
-- users
-- sessions
-- events
-- orders
-- products
-- channels
+- Power BI
 
 ## Project Structure
 ```text
 [pulsemetrics/
 │
-├── README.md
-├── requirements.txt
-├── .gitignore
 ├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── sql/
-│   ├── schema.sql
-│   ├── metrics.sql
-│   ├── data_quality_checks.sql
-│   └── anomaly_queries.sql
-│
 ├── notebooks/
-│   ├── 01_exploration.ipynb
-│   ├── 02_kpi_analysis.ipynb
-│   └── 03_root_cause_analysis.ipynb
-│
 ├── src/
-│   ├── ingest_data.py
-│   ├── metrics_layer.py
-│   ├── dq_checks.py
-│   ├── anomaly_detection.py
-│   ├── root_cause_rules.py
-│   └── llm_explanations.py
+│   ├── metrics.py
+│   ├── experiments.py
+│   ├── pricing.py
 │
 ├── app/
 │   └── streamlit_app.py
 │
-├── docs/
-│   ├── kpi_dictionary.md
-│   ├── architecture.png
-│   └── case_study.md
-│
-└── dashboard/
-    └── powerbi_screenshots/]
+├── README.md ]
+
+
