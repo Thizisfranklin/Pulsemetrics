@@ -1,5 +1,5 @@
 # Pulsemetrics
-Food Delivery Competitive Pricing Intelligence
+
 
 > A product analytics case study in competitive pricing, promotional strategy, and experimentation design for restaurant operators on delivery platforms.
 
